@@ -84,8 +84,14 @@
                     rate = dayRate['41 a 50 pessoas'];
                 }
 
-                totalCost += rate;
+                // Multiplicar a tarifa pelo número de pessoas
+                totalCost += rate * numPeople;
                 currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            // Garantir que o valor mínimo seja de R$1500
+            if (totalCost < 1500) {
+                totalCost = 1500;
             }
 
             document.getElementById('result').innerText = `O valor total da estadia é R$ ${totalCost.toFixed(2)}`;
