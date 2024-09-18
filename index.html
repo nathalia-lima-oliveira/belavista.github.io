@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcule aqui a tarifa de sua estadia no Sítio Bela Vista</title>
+    <title>Calcule a tarifa de sua estadia no Sítio Bela Vista</title>
 </head>
 <body>
-    <h1>Calcule aqui a tarifa de sua estadia no Sítio Bela Vista</h1>
+    <h1>Calcule a tarifa de sua estadia no Sítio Bela Vista</h1>
     <form id="rentalForm">
         <label for="numPeople">Número de Pessoas:</label>
         <input type="number" id="numPeople" min="1" required><br>
@@ -21,6 +21,12 @@
     </form>
 
     <p id="result"></p>
+
+    <!-- Adiciona a área para as frases -->
+    <p id="additionalInfo" style="display: none;">
+        Para fazer download de fotos e descrição completa dos espaços, clique aqui <a href="link_para_fotos_descricao" target="_blank"></a>.<br>
+        Quer agendar uma visita ou confirmar reserva? Mande mensagem no WhatsApp , com as informações fornecidas acima, clicando aqui <a href="https://api.whatsapp.com/send?phone=SEU_NUMERO_DE_WHATSAPP&text=Informações da reserva: " target="_blank">WhatsApp</a>
+    </p>
 
     <script>
         // Carregar o arquivo JSON das tarifas
@@ -106,6 +112,9 @@
             }
 
             document.getElementById('result').innerText = `O valor total da estadia é R$ ${totalCost.toFixed(2)}`;
+
+            // Exibe as frases adicionais
+            document.getElementById('additionalInfo').style.display = 'block';
         });
     </script>
 </body>
