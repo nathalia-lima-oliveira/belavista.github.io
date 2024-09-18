@@ -71,22 +71,26 @@
                 }
 
                 let rate;
+                let additionalRate = 0;
 
-                // Definir a faixa correta de tarifa baseada no número de pessoas
-                if (numPeople <= 15) {
-                    rate = dayRate['Até 15 pessoas'];
-                } else if (numPeople <= 20) {
-                    rate = dayRate['de 16 a 20 pessoas'];
+                // Verificar a faixa correta de tarifa baseada no número de pessoas
+                if (numPeople <= 20) {
+                    rate = dayRate['Até 20 pessoas'];
                 } else if (numPeople <= 30) {
                     rate = dayRate['21 a 30 pessoas'];
                 } else if (numPeople <= 40) {
                     rate = dayRate['31 a 40 pessoas'];
                 } else {
-                    rate = dayRate['41 a 50 pessoas'];
+                    // Caso tenha mais de 40 pessoas, calcular para as primeiras 40 e adicionar o adicional
+                    rate = dayRate['31 a 40 pessoas']; // Para as 40 primeiras pessoas
+                    additionalRate = dayRate['Adicional'] * (numPeople - 40); // Para as pessoas adicionais
                 }
 
-                // Multiplicar a tarifa pela quantidade de pessoas e adicionar ao total
-                totalCost += rate * numPeople;
+                // Multiplicar a tarifa base pela quantidade de pessoas (para até 40)
+                totalCost += rate * Math.min(numPeople, 40); 
+                // Adicionar o custo adicional para pessoas extras (acima de 40)
+                totalCost += additionalRate;
+
                 currentDate.setDate(currentDate.getDate() + 1);
             }
 
