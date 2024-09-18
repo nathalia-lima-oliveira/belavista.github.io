@@ -29,7 +29,7 @@
     <!-- Adiciona a área para as frases -->
     <p id="additionalInfo" style="display: none;">
         Clique <a href="https://drive.google.com/drive/u/0/folders/11FJ-7dSZk2I5ddcfFFiKgIsQzIxFGRbj" target="_blank">aqui</a> para fazer download de fotos e descrição completa dos espaços.<br><br>
-        Quer agendar uma visita ou confirmar reserva? Mande mensagem no <a href="https://api.whatsapp.com/send?phone=5515997555580&text=Olá Sítio Bela Vista, segue as informações da reserva: " target="_blank">WhatsApp</a>, com as informações fornecidas acima.
+        Quer agendar uma visita ou confirmar reserva? Mande mensagem no <a id="whatsappLink" href="#" target="_blank">WhatsApp</a>, com as informações fornecidas acima, clicando aqui.
     </p>
 
     <script>
@@ -115,12 +115,23 @@
                 totalCost = 1500;
             }
 
+            // Atualiza o valor total no campo de resultado
             document.getElementById('result').innerText = `O valor total da estadia é R$ ${totalCost.toFixed(2)}`;
 
             // Exibe as frases adicionais
             document.getElementById('additionalInfo').style.display = 'block';
+
+            // Criar a mensagem para o WhatsApp com as informações da reserva
+            const whatsappMessage = `Olá, gostaria de confirmar uma reserva com as seguintes informações:%0A
+Número de pessoas: ${numPeople}%0A
+Data de início: ${formatDate(startDate)}%0A
+Data de fim: ${formatDate(endDate)}%0A
+Valor total da estadia: R$ ${totalCost.toFixed(2)}`;
+
+            // Atualizar o link do WhatsApp com a mensagem gerada
+            const whatsappLink = document.getElementById('whatsappLink');
+            whatsappLink.href = `https://api.whatsapp.com/send?phone=5515997555580&text=${encodeURIComponent(whatsappMessage)}`;
         });
     </script>
 </body>
 </html>
-
