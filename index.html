@@ -72,6 +72,7 @@
 
                 let rate;
 
+                // Definir a faixa correta de tarifa baseada no número de pessoas
                 if (numPeople <= 15) {
                     rate = dayRate['Até 15 pessoas'];
                 } else if (numPeople <= 20) {
@@ -84,7 +85,7 @@
                     rate = dayRate['41 a 50 pessoas'];
                 }
 
-                // Multiplicar a tarifa pelo número de pessoas
+                // Multiplicar a tarifa pela quantidade de pessoas e adicionar ao total
                 totalCost += rate * numPeople;
                 currentDate.setDate(currentDate.getDate() + 1);
             }
@@ -99,3 +100,4 @@
     </script>
 </body>
 </html>
+
