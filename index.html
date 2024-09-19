@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcule a tarifa de sua estadia no Sítio Bela Vista</title>
+    <style>
+        /* Estilo para o valor total da estadia */
+        #result {
+            font-size: 24px; /* Tamanho maior */
+            font-weight: bold; /* Negrito */
+            margin-top: 20px; /* Margem superior para dar mais espaço */
+        }
+    </style>
 </head>
 <body>
     <h1>Calcule a tarifa de sua estadia no Sítio Bela Vista</h1>
@@ -134,7 +142,7 @@
             }
 
             // Atualiza o valor total no campo de resultado
-            document.getElementById('result').innerText = `O valor total da estadia é <strong>R$ ${totalCost.toFixed(2)}</strong>`;
+            document.getElementById('result').innerText = `O valor total da estadia é R$ ${totalCost.toFixed(2)}</strong>`;
 
             // Exibe as frases adicionais
             document.getElementById('additionalInfo').style.display = 'block';
